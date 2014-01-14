@@ -11,6 +11,7 @@ public class Cashier implements Runnable {
     private Client myClient;
     private CashierState state;
     private Order order;
+    private boolean orderPayed;
 
     public Cashier(RestaurantMediator restaurant) {
         super();
@@ -49,13 +50,12 @@ public class Cashier implements Runnable {
         this.state = state;
     }
 
-    public boolean isOrderFinished() {
-        return order.isFinished();
+    public boolean isOrderPayed() {
+        return order.isFinished() && orderPayed;
     }
 
     public void sendOrder() {
-
-
+        restaurant.sendOrder(order);
     }
 
     public boolean isOrderPrepared() {
@@ -77,6 +77,11 @@ public class Cashier implements Runnable {
 
     public void cleanUp() {
         order = new Order();
+        orderPayed = false;
+    }
+
+    public void payOrder() {
+        orderPayed = true;
     }
 
 }

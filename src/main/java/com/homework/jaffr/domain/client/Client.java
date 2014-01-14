@@ -63,7 +63,7 @@ public class Client implements Runnable {
     }
 
     public void payOrder() {
-        System.out.println("Client pays for order!");
+        myCashier.payOrder();
     }
 
     public boolean hasReceivedOrder() {

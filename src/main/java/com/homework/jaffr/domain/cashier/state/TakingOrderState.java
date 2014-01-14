@@ -6,7 +6,7 @@ import com.homework.jaffr.domain.cashier.CashierState;
 public class TakingOrderState implements CashierState {
 
     public void exec(Cashier cashier) {
-        while (!cashier.isOrderFinished()) {
+        while (!cashier.isOrderPayed()) {
         }
         cashier.sendOrder();
         cashier.setState(new WaitingForOrderState());
