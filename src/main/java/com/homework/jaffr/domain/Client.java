@@ -11,6 +11,7 @@ public class Client implements Runnable {
     public Client(RestaurantMediator restaurant) {
         super();
         this.restaurant = restaurant;
+        this.state = new LookigForCashierState();
     }
 
     public Cashier getCashier() {
@@ -21,23 +22,30 @@ public class Client implements Runnable {
         this.myCashier = Cashier;
     }
 
+    public void setState(ClientState state) {
+        this.state = state;
+    }
+
     public void run() {
         System.out.println("Client started");
-        while (myCashier == null) {
-            try {
-                restaurant.lookForFreeCashier(this);
-                Thread.sleep(1000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
+        doStuff();
         System.out.println("Cashier found!");
     }
 
+    public void lookForFreeCashier() {
+        restaurant.lookForFreeCashier(this);
+    }
+
     public void clientLeft() {
-        myCashier.clientLeft();
         restaurant.leave(this);
+    }
+    
+    public boolean hasFoundCashier() {
+        return myCashier != null;
+    }
+
+    public void doStuff() {
+        state.doStuff(this);
     }
 
 }

@@ -1,4 +1,5 @@
 package com.homework.jaffr.domain;
 
-public class ClientState {
+public interface ClientState {
+    void doStuff(Client client);
 }
