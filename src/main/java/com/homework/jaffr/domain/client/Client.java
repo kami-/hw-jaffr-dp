@@ -1,5 +1,8 @@
-package com.homework.jaffr.domain;
+package com.homework.jaffr.domain.client;
 
+import com.homework.jaffr.domain.RestaurantMediator;
+import com.homework.jaffr.domain.cashier.Cashier;
+import com.homework.jaffr.domain.client.state.LookigForCashierState;
 
 
 public class Client implements Runnable {
@@ -28,7 +31,7 @@ public class Client implements Runnable {
 
     public void run() {
         System.out.println("Client started");
-        doStuff();
+        doExec();
         System.out.println("Cashier found!");
     }
 
@@ -46,8 +49,8 @@ public class Client implements Runnable {
         return myCashier != null;
     }
 
-    public void doStuff() {
-        state.doStuff(this);
+    public void doExec() {
+        state.exec(this);
     }
 
     public void orderItem() {

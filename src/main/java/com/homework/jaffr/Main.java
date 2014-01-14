@@ -2,9 +2,9 @@ package com.homework.jaffr;
 
 import java.util.Random;
 
-import com.homework.jaffr.domain.Cashier;
-import com.homework.jaffr.domain.Client;
 import com.homework.jaffr.domain.RestaurantMediator;
+import com.homework.jaffr.domain.cashier.Cashier;
+import com.homework.jaffr.domain.client.Client;
 
 public class Main {
     public static void main(String[] args) {

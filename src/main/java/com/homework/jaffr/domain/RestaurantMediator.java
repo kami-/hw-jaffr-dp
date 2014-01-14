@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.homework.jaffr.domain.cashier.Cashier;
+import com.homework.jaffr.domain.client.Client;
+
 public class RestaurantMediator {
     private List<Cashier> cashiers = Collections.synchronizedList(new ArrayList<Cashier>());
     private List<Client> clients = Collections.synchronizedList(new ArrayList<Client>());
