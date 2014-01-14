@@ -13,14 +13,12 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             Cashier cashier = new Cashier(restaurant);
             restaurant.addCashier(cashier);
-            new Thread(cashier).start();
+            new Thread(cashier, "cashier" + i).start();
         }
-        for (int i = 0; i < 1000; i++) {
-            if (random.nextInt(3) == 0) {
-                Client client = new Client(restaurant);
-                restaurant.addClient(client);
-                new Thread(client).start();
-            }
+        for (int i = 0; i < 10; i++) {
+            Client client = new Client(restaurant);
+            restaurant.addClient(client);
+            new Thread(client, "client" + i).start();
             try {
                 Thread.sleep(random.nextInt(100) + 100);
             } catch (InterruptedException e) {

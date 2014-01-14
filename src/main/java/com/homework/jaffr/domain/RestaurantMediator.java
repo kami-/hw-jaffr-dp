@@ -32,7 +32,7 @@ public class RestaurantMediator {
         synchronized (cashiers) {
             for (Cashier cashier : cashiers) {
                 if (cashier.isFree()) {
-                    cashier.setMyClient(client);
+                    cashier.setClient(client);
                     client.setCashier(cashier);
                     break;
                 }
@@ -41,7 +41,6 @@ public class RestaurantMediator {
     }
 
     public void leave(Client client) {
-        client.clientLeft();
         clients.remove(client);
     }
 

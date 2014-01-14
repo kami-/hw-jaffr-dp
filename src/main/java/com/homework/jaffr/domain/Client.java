@@ -36,8 +36,10 @@ public class Client implements Runnable {
         restaurant.lookForFreeCashier(this);
     }
 
-    public void clientLeft() {
+    public void leave() {
+        myCashier.setClient(null);
         restaurant.leave(this);
+        System.out.println("Client left");
     }
     
     public boolean hasFoundCashier() {
@@ -46,6 +48,22 @@ public class Client implements Runnable {
 
     public void doStuff() {
         state.doStuff(this);
+    }
+
+    public void orderItem() {
+        System.out.println("Client ordered!");
+    }
+
+    public void setDiscount() {
+        System.out.println("Client discount!");
+    }
+
+    public void pay() {
+        System.out.println("Client pays for order!");
+    }
+
+    public boolean hasReceivedOrder() {
+        return true;
     }
 
 }

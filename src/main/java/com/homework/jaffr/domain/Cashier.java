@@ -13,7 +13,7 @@ public class Cashier implements Runnable {
         return myClient;
     }
 
-    public void setMyClient(Client myClient) {
+    public void setClient(Client myClient) {
         this.myClient = myClient;
     }
 
