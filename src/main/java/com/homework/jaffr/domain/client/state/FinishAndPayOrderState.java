@@ -6,7 +6,8 @@ import com.homework.jaffr.domain.client.ClientState;
 public class FinishAndPayOrderState implements ClientState {
 
     public void exec(Client client) {
-        client.pay();
+        client.finishOrder();
+        client.payOrder();
         client.setState(new WaitingForOrderSate());
         client.doExec();
     }

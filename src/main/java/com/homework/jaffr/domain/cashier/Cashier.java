@@ -3,16 +3,20 @@ package com.homework.jaffr.domain.cashier;
 import com.homework.jaffr.domain.RestaurantMediator;
 import com.homework.jaffr.domain.cashier.state.WaitingForClientState;
 import com.homework.jaffr.domain.client.Client;
+import com.homework.jaffr.domain.order.Order;
+import com.homework.jaffr.domain.order.OrderItem;
 
 public class Cashier implements Runnable {
     private RestaurantMediator restaurant;
     private Client myClient;
     private CashierState state;
+    private Order order;
 
     public Cashier(RestaurantMediator restaurant) {
         super();
         this.restaurant = restaurant;
         this.state = new WaitingForClientState();
+        this.order = new Order();
     }
 
     public Client getMyClient() {
@@ -46,11 +50,11 @@ public class Cashier implements Runnable {
     }
 
     public boolean isOrderFinished() {
-        return true;
+        return order.isFinished();
     }
 
     public void sendOrder() {
-        // TODO Auto-generated method stub
+
 
     }
 
@@ -61,6 +65,18 @@ public class Cashier implements Runnable {
     public void serveOrder() {
         // TODO Auto-generated method stub
         
+    }
+
+    public void order(OrderItem item) {
+        order.addItem(item);
+    }
+
+    public void finishOrder() {
+        order.setFinished(true);
+    }
+
+    public void cleanUp() {
+        order = new Order();
     }
 
 }

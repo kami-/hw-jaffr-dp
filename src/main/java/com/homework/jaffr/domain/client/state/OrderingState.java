@@ -1,17 +1,17 @@
-package com.homework.jaffr.domain.client;
+package com.homework.jaffr.domain.client.state;
 
 import java.util.Random;
 
-import com.homework.jaffr.domain.client.state.DiscountState;
-import com.homework.jaffr.domain.client.state.FinishAndPayOrderState;
-import com.homework.jaffr.domain.client.state.LeaveRestaurantState;
+import com.homework.jaffr.domain.client.Client;
+import com.homework.jaffr.domain.client.ClientState;
+import com.homework.jaffr.domain.order.RandomOrderGenerator;
 
 public class OrderingState implements ClientState {
 
     Random random = new Random();
 
     public void exec(Client client) {
-        client.orderItem();
+        client.orderItem(RandomOrderGenerator.nextOrderItem());
         client.setState(getNextState());
         client.doExec();
     }

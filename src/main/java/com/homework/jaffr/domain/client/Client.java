@@ -3,6 +3,7 @@ package com.homework.jaffr.domain.client;
 import com.homework.jaffr.domain.RestaurantMediator;
 import com.homework.jaffr.domain.cashier.Cashier;
 import com.homework.jaffr.domain.client.state.LookigForCashierState;
+import com.homework.jaffr.domain.order.OrderItem;
 
 
 public class Client implements Runnable {
@@ -53,20 +54,24 @@ public class Client implements Runnable {
         state.exec(this);
     }
 
-    public void orderItem() {
-        System.out.println("Client ordered!");
+    public void orderItem(OrderItem item) {
+        myCashier.order(item);
     }
 
     public void setDiscount() {
         System.out.println("Client discount!");
     }
 
-    public void pay() {
+    public void payOrder() {
         System.out.println("Client pays for order!");
     }
 
     public boolean hasReceivedOrder() {
         return true;
+    }
+
+    public void finishOrder() {
+        myCashier.finishOrder();
     }
 
 }
